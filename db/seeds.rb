@@ -32,5 +32,5 @@ end
 
 admin = User.find_by(username: 'admin')
 Room.all.each do |room|
-  Message.create(room: room, created_by: admin, body: 'This is a test message from the admin for room #{room.name}.')
+  Message.create(room: room, created_by: admin, body: "This is a test message from the admin for room #{room.name}.")
 end
