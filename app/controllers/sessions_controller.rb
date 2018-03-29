@@ -4,12 +4,9 @@ class SessionsController < ApplicationController
 
     session_token = SecureRandom.uuid
 
-    # perform authentication here
-
-    user.update(session_token: session_token)
-    cookies[:session_token] = session_token
-
-    if (params[:password] == "password")
+    if user.present? && params[:password] == 'password'
+      user.update(session_token: session_token)
+      cookies[:session_token] = session_token
       render json: { success: true }
     else
       render json: { success: false, message: "Your password was incorrect. Try 'password'." }
