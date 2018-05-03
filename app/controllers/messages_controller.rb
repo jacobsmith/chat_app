@@ -15,6 +15,7 @@ class MessagesController < ApplicationController
 
   # POST /messages
   def create
+    puts "currently logged in as: #{current_user.inspect}"
     @message = Message.new(message_params)
     @message.created_by = current_user
 
