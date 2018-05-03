@@ -6,8 +6,7 @@ class SessionsController < ApplicationController
 
     if user.present? && params[:password] == 'password'
       user.update(session_token: session_token)
-      cookies[:session_token] = session_token
-      render json: { success: true }
+      render json: { session_token: session_token }
     else
       render json: { success: false, message: "Your password was incorrect. Try 'password'." }
     end
