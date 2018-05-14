@@ -10,7 +10,7 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1
   def show
-    render json: @room.to_json(include: :messages)
+    render json: @room.to_json(include: { :messages => { include: :created_by } })
   end
 
   # POST /rooms
